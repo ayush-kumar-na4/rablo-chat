@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1078187279446",
+    "firebase_url": "https://rablo-chat-c444b-default-rtdb.firebaseio.com",
+    "project_id": "rablo-chat-c444b",
+    "storage_bucket": "rablo-chat-c444b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078187279446:android:a3750b2c1dea00b5cea7f7",
+        "android_client_info": {
+          "package_name": "com.example.rablo_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZmpuoKy2mOqg8BF4aq9pGA5dytDK5UYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
