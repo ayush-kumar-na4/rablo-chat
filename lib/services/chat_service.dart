@@ -6,6 +6,8 @@ class ChatService {
   final FirebaseFirestore _firestoreDatabse = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
 
+  FirebaseFirestore get firestoreDatabase => _firestoreDatabse;
+
   Stream<List<Map<String, dynamic>>> registeredUsersStream() {
     return _firestoreDatabse.collection("Users").snapshots().map((snapshot) {
       return snapshot.docs.map((users) {
@@ -58,5 +60,46 @@ class ChatService {
         .collection("messages")
         .orderBy("timestamp", descending: false)
         .snapshots();
+  }
+
+  Future<void> deleteMessage(
+    String userID,
+    String otherUserID,
+    String messageID,
+  ) async {
+    //chatroom id
+    List<String> ids = [userID, otherUserID];
+    ids.sort();
+    String chatRoomID = ids.join('_');
+
+    // delete message
+    await _firestoreDatabse
+        .collection("chat_rooms")
+        .doc(chatRoomID)
+        .collection("messages")
+        .doc(messageID)
+        .delete();
+  }
+
+  Future<void> updateMessage(
+    String userID,
+    String otherUserID,
+    String messageID,
+    String newMessage,
+  ) async {
+    List<String> ids = [userID, otherUserID];
+    ids.sort();
+    String chatRoomID = ids.join('_');
+
+    await _firestoreDatabse
+        .collection("chat_rooms")
+        .doc(chatRoomID)
+        .collection("messages")
+        .doc(messageID)
+        .update({
+          'message': newMessage,
+          'isEdited': true,
+          'editedAt': Timestamp.now(),
+        });
   }
 }

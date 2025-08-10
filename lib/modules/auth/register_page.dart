@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rablo_chat/modules/auth/login_page.dart';
 import 'package:rablo_chat/modules/home/home_page.dart';
@@ -17,7 +16,7 @@ class RegisterPage extends StatelessWidget {
     final _authservice = AuthServices();
 
     try {
-      final usercredential = await _authservice.signUpEnP(
+      await _authservice.signUpEnP(
         name: nameController.text,
         email: emailController.text,
         password: passwordController.text,

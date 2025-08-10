@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ChatBubble extends StatelessWidget {
+class MessageContainer extends StatelessWidget {
   final String message;
   final bool isCurrentUser;
 
-  const ChatBubble({
+  const MessageContainer({
     super.key,
     required this.message,
     required this.isCurrentUser,
@@ -33,7 +33,7 @@ class ChatBubble extends StatelessWidget {
                 ? Colors.purple[50]
                 : Colors.blue[50], // You can change this dynamically too
       ),
-      child: Text(message),
+      child: Text(message, style: TextStyle(fontSize: 20)),
     );
   }
 }
